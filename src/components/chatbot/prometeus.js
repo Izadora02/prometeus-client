@@ -46,7 +46,7 @@ export default function Prometeus() {
         speak({ text: resp });
       })
       .catch((err) => {
-        alert(err);
+        console.log(err);
       });
   };
 
