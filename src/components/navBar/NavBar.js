@@ -20,7 +20,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../../img/logo-2.svg';
 import { Paper } from '@material-ui/core';
 import { Divider } from '@mui/material';
@@ -33,7 +33,7 @@ import Prometeus from '../chatbot/prometeus';
 
 const settings = ['Perfil', 'Logout'];
 const menuAluno = ['Ver Tarefas', 'Home'];
-const menuProf = ['Criar Tarefas', 'Ver Tarefas', 'Cadastrar Usuario', 'Home'];
+const menuProf = ['Criar Tarefas', 'Ver Tarefas', 'Cadastrar Usuário', 'Home'];
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -82,13 +82,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const NavBar = (props) => {
   const history = useHistory();
-
+  const { pathname } = useLocation();
   const theme = useTheme();
   const appBarColor = '#3478cf';
 
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [open, setOpen] = useState(true);
-  const [page, setPage] = useState('Home');
 
   const changeIcon = (menu) => {
     switch (menu) {
@@ -96,7 +95,7 @@ const NavBar = (props) => {
         return <CottageOutlinedIcon />;
       case 'Ver Tarefas':
         return <ContentPasteOutlinedIcon />;
-      case 'Cadastrar Usuario':
+      case 'Cadastrar Usuário':
         return <PersonAddAlt1OutlinedIcon />;
       case 'Criar Tarefas':
         return <AddTaskOutlinedIcon />;
@@ -132,21 +131,34 @@ const NavBar = (props) => {
   const menuRoutes = (menu) => {
     switch (menu) {
       case 'Ver Tarefas':
-        setPage('Tarefas');
         history.push('/tarefas');
         return;
-      case 'Cadastrar Usuario':
-        setPage('Cadastro Usuario');
+      case 'Cadastrar Usuário':
         history.push('/cadastroAluno');
         return;
       case 'Criar Tarefas':
-        setPage('Cadastro Tarefa');
         history.push('/cadastroTarefa');
         return;
       case 'Home':
-        setPage('Home');
         history.push(`/${props.user}`);
         return;
+      default:
+        break;
+    }
+  };
+
+  const tes = () => {
+    switch (pathname) {
+      case '/Professor':
+      case '/Aluno':
+        return 'Home';
+      case '/tarefas':
+        return 'Tarefas';
+      case '/cadastroAluno':
+        return 'Cadastro Usuário';
+      case '/cadastroTarefa':
+        return 'Cadastro Tarefa';
+
       default:
         break;
     }
@@ -186,7 +198,7 @@ const NavBar = (props) => {
                 flexGrow: 1,
               }}
             >
-              {page}
+              {tes()}
             </Typography>
 
             <Typography

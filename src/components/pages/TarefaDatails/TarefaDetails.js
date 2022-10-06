@@ -91,7 +91,7 @@ export default function TarefaDatails({ user, setCurrentId }) {
               }}
             >
               <Typography variant="h5" gutterBottom>
-                Instruções
+                Instruções :
               </Typography>
               <Divider />
               <Typography style={{ marginTop: '20px', marginBottom: '20px' }}>
@@ -103,7 +103,7 @@ export default function TarefaDatails({ user, setCurrentId }) {
                 variant="h6"
                 gutterBottom
               >
-                Materiais de referência :
+                Materiais :
               </Typography>
               {tarefa.file ? (
                 <>

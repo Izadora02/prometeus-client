@@ -62,12 +62,14 @@ export default function Prometeus() {
       command: 'criar *',
       callback: (site) => {
         history.push('/cadastroTarefa');
+        resetTranscript();
       },
     },
     {
       command: 'ver *',
       callback: (site) => {
         history.push('/tarefas');
+        resetTranscript();
       },
     },
   ];
