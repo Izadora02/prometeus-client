@@ -5,4 +5,4 @@ export const urlServer = 'https://prometeus-server.herokuapp.com/';
 
 //https://prometeus-client.herokuapp.com/
 //http://localhost:3000/
-export const urlClient = 'https://prometeus-client.herokuapp.com/';
+export const urlClient = 'http://localhost:3000/';
